@@ -10,4 +10,7 @@
 
 @protocol MoviesListInteractorOutput <NSObject>
 
+-(void) didRetrieveFilms:(NSArray*) films;
+-(void) didRetrieveError:(NSError*) error;
+
 @end

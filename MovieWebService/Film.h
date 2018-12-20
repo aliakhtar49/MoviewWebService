@@ -24,16 +24,17 @@ NS_ASSUME_NONNULL_BEGIN
     BOOL *nominated;
 }
 
-@property (nonatomic) FilmRating filmRating;
-@property (weak, nonatomic) NSArray *languages;
-@property (weak, nonatomic) NSDate *releaseDate;
-@property (weak, nonatomic) NSArray<Actor*> *cast;
+@property (nonatomic, assign) FilmRating filmRating;
+@property (nonatomic, strong) NSArray *languages;
+@property (nonatomic, strong) NSDate *releaseDate;
+@property (nonatomic, strong) NSArray<Actor*> *cast;
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, assign) double rating;
+@property (nonatomic, strong) Director *director;
 
 - (id)initWithData:(NSDictionary *)data;
 
-@property (nonatomic, strong) NSString *name;
-@property (nonatomic) double rating;
-@property (nonatomic, strong) Director *director;
+
 
 @end
 

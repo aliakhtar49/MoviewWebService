@@ -11,7 +11,7 @@
 @implementation Actor
 
 - (id)initWithData:(NSDictionary *)data {
-    self = [super init];
+    self = [super initWithData:data];
     if (self) {
         self.screenName = [data objectForKey:@"screenName"];
     }

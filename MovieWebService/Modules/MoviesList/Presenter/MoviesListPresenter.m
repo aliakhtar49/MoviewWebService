@@ -13,23 +13,37 @@
 #import "MoviesListRouterInput.h"
 
 @implementation MoviesListPresenter {
-    NSArray *films;
+    NSArray *filmsArray;
 }
 
 - (void)configureModule {
  }
 
+
+
+#pragma mark - MoviesListPresenterInterface Delegates
+
+- (NSInteger)numberOfRowsInSection:(NSInteger)section {
+    return filmsArray.count;
+}
+- (void)loadContent {
+    
+    [self.interactor retrieveMovies];
+}
+- (NSArray*) getFilmsData {
+    return filmsArray;
+}
 - (void)didTriggerViewReadyEvent {
-	[self.view setupInitialState];
+    [self.view setupInitialState];
+    [self.view setupView];
 }
 
-- (void)setViewForSetup:(UIView *)view {
-    [self.interactor setViewForSetup:view];
+#pragma mark - MoviesListInteractorOutputDelegates
+- (void)didRetrieveError:(NSError *)error {
+    
 }
-
-- (void)setData:(Film *)film {
-    films = [NSArray arrayWithObject:film];
-    [self.interactor setData:films];
+- (void)didRetrieveFilms:(NSArray *)films {
+    filmsArray = films;
+    [self.view reloadView];
 }
-
 @end

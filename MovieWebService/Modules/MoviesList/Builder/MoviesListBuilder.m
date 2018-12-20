@@ -27,9 +27,9 @@
     presenter.router = router;
 
     MoviesListInteractor *interactor = [MoviesListInteractor new];
-    interactor.output = presenter;
+    interactor.presenter = presenter;
     presenter.interactor = interactor;
-    viewController.output = presenter;
+    viewController.presenter = presenter;
     
     return viewController;
 

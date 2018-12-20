@@ -10,10 +10,11 @@
 #import <UIKit/UIKit.h>
 #import "Film.h"
 
-@protocol MoviesListViewOutput <NSObject>
+@protocol MoviesListPresenterInterface <NSObject>
 
 - (void)didTriggerViewReadyEvent;
-- (void)setViewForSetup:(UIView *)view;
-- (void)setData:(Film *)film;
+- (void) loadContent;
+- (NSInteger)numberOfRowsInSection:(NSInteger)section;
+- (NSArray*) getFilmsData;
 
 @end

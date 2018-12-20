@@ -11,7 +11,7 @@
 @implementation Director
 
 - (id)initWithData:(NSDictionary *)data {
-    self = [super init];
+    self = [super initWithData:data];
     return self;
 }
 

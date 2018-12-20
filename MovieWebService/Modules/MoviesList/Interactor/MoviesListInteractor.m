@@ -7,89 +7,62 @@
 //
 
 #import "MoviesListInteractor.h"
-
 #import "MoviesListInteractorOutput.h"
 #import "Film.h"
-#import "Masonry.h"
-#import "AppDelegate.h"
 #import "MovieWebService-Swift.h"
 
 @implementation MoviesListInteractor {
-    UITableView *tableView;
-    NSArray *films;
-    UIView *view;
+}
+- (void)getFilmWithCallback:(void (^)(Film *film))callback {
+    dispatch_async(dispatch_get_global_queue(QOS_CLASS_UTILITY, 0), ^{
+        NSDictionary *data = @{
+                               @"filmRating" : @3,
+                               @"languages": @[
+                                       @"English",
+                                       @"Thai"
+                                       ],
+                               @"nominated": @1,
+                               @"releaseDate": @1350000000,
+                               @"cast": @[
+                                       @{
+                                           @"dateOfBirth": @-436147200,
+                                           @"nominated": @1,
+                                           @"name": @"Bryan Cranston",
+                                           @"screenName": @"Jack Donnell",
+                                           @"biography": @"Bryan Lee Cranston is an American actor, voice actor, writer and director."
+                                           }
+                                       ],
+                               @"name": @"Argo",
+                               @"rating": @7.8,
+                               @"director": @{
+                                       @"dateOfBirth": @82684800,
+                                       @"nominated": @1,
+                                       @"name": @"Ben Affleck",
+                                       @"biography": @"Benjamin Geza Affleck was born on August 15, 1972 in Berkeley, California, USA but raised in Cambridge, Massachusetts, USA."
+                                       }
+                               };
+        
+        Film* film = [[Film alloc] initWithData:data];
+        
+        data = nil;
+        callback(film);
+    });
 }
 
-- (void)setViewForSetup:(UIView *)view1 {
-    view = view1;
-    tableView = [UITableView new];
-    [view addSubview:tableView];
-    tableView.delegate = self;
-    tableView.dataSource = self;
-}
 
 #pragma mark - MoviesListInteractorInput
 
-- (void)setData:(NSArray *)films1 {
-    films = films1;
-    [tableView mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(view);
-        make.right.mas_equalTo(view);
-        make.top.mas_equalTo(view);
-        make.bottom.mas_equalTo(view);
+- (void)retrieveMovies {
+    
+    MoviesListInteractor * __weak weakSelf = self;
+    [self getFilmWithCallback:^(Film *film) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf.presenter didRetrieveFilms:@[film]];
+        });
+        
     }];
-
-    [tableView reloadData];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return films.count;
-}
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"CellTableViewCell";
-    CellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[NSBundle mainBundle] loadNibNamed:@"CellTableViewCell" owner:self options:nil] firstObject];
-        //cell = self.movieCell;
-        //self.movieCell = nil;
-    }
-    Film *film = [films objectAtIndex:indexPath.row];
-    cell.name.text = film.name;
-
-    NSCalendar* cal = [NSCalendar new];
-    NSString* dateText;
-    NSDateFormatter *f = [[NSDateFormatter alloc] init];
-    [f setCalendar:cal];
-    dateText = [f stringFromDate:film.releaseDate];
-
-    cell.date.text = dateText;
-
-    NSString *filmRatingText;
-    switch (film.filmRating) {
-        case G:
-            filmRatingText = @"G";
-        case PG:
-            filmRatingText = @"PG";
-        case PG13:
-            filmRatingText = @"PG13";
-        case R:
-            filmRatingText = @"R";
-        default:
-            break;
-    }
-    cell.filmRating.text = filmRatingText;
-    cell.rating.text = [[NSNumber numberWithInteger:film.rating] stringValue];
-
-    return cell;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    Film *film = [films objectAtIndex:indexPath.row];
-    DetailsModuleBuilder *builder = [DetailsModuleBuilder new];
-    [appDelegate.navigationController pushViewController:[builder buildWith:film] animated:YES];
-}
 
 @end

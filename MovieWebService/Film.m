@@ -22,25 +22,24 @@
         self.name = [data objectForKey:@"name"];
         self.rating = [[data objectForKey:@"rating"] doubleValue];
         self.director = [[Director alloc] initWithData:[data objectForKey:@"director"]];
-        NSMutableArray *castsList = nil;
-        NSArray *castsData = [data objectForKey:@"casts"];
+        NSMutableArray *castsList = [[NSMutableArray alloc] init];
+        NSArray *castsData = [data objectForKey:@"cast"];
         for (NSDictionary *castData in castsData) {
             Actor *actor = [[Actor alloc] initWithData:castData];
-            actor.film = self;
+           // actor.film = self;
             [castsList addObject:actor];
         }
         self.cast = castsList;
-        [castsList removeAllObjects];
     }
     return self;
 }
 
 
-- (void)setName:(NSString *)name {
-    if (name != _name) {
-        name = _name;
-    }
-}
+//- (void)setName:(NSString *)name {
+//    if (![name isEqualToString:_name]) {
+//        name = _name;
+//    }
+//}
 
 - (void)setNominated:(BOOL)nominate;
 {

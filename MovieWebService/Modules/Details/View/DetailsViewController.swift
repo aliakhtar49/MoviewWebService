@@ -8,14 +8,14 @@
 
 import UIKit
 
-class DetailsViewController: UIViewController, DetailsViewInput, TappableLabelDelegate {
+class DetailsViewController: UIViewController, DetailsViewInput{
 
     var output: DetailsViewOutput!
     public var director: Director!
 
     var directorName: UILabel!
     var directorNameValue: UILabel!
-    var tapToShowMore: TappableLabel!
+    //var tapToShowMore: TappableLabel!
     var actorName: UILabel!
     var actorScreenName: UILabel!
 
@@ -37,11 +37,11 @@ class DetailsViewController: UIViewController, DetailsViewInput, TappableLabelDe
         directorNameValue.frame = CGRect(x: 20, y: 150, width: 200, height: 30)
         directorNameValue.text = director.name;
 
-       tapToShowMore = TappableLabel()
-        view.addSubview(tapToShowMore)
-        tapToShowMore.frame = CGRect(x: 20, y: 200, width: 200, height: 30)
-        tapToShowMore.text = "Tap here to show more"
-        tapToShowMore.delegate = self
+       //tapToShowMore = TappableLabel()
+//        view.addSubview(tapToShowMore)
+//        tapToShowMore.frame = CGRect(x: 20, y: 200, width: 200, height: 30)
+//        tapToShowMore.text = "Tap here to show more"
+//        tapToShowMore.delegate = self
 
         actorName = UILabel()
         view.addSubview(actorName)
@@ -53,9 +53,9 @@ class DetailsViewController: UIViewController, DetailsViewInput, TappableLabelDe
         actorName.isHidden = true
         actorScreenName.isHidden = true
 
-        let actor: Actor = director.film.cast?[0] as! Actor
+       // let actor: Actor = director.film.cast?[0] as! Actor
         actorName.text = director.name;
-        actorScreenName.text = actor.screenName;
+        //actorScreenName.text = actor.screenName;
 
     }
 

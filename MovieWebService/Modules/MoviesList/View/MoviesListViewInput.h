@@ -8,8 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol MoviesListViewInput <NSObject>
+@protocol MoviesListViewInterface <NSObject>
 
-- (void)setupInitialState;
+- (void) setupInitialState;
+- (void) setupView;
+- (void) reloadView;
 
 @end

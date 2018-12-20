@@ -35,7 +35,7 @@
 
     self.mockInteractor = OCMProtocolMock(@protocol(MoviesListInteractorInput));
     self.mockRouter = OCMProtocolMock(@protocol(MoviesListRouterInput));
-    self.mockView = OCMProtocolMock(@protocol(MoviesListViewInput));
+    self.mockView = OCMProtocolMock(@protocol(MoviesListViewInterface));
 
     self.presenter.interactor = self.mockInteractor;
     self.presenter.router = self.mockRouter;

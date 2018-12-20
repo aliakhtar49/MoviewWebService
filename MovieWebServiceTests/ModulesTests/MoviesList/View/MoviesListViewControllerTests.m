@@ -28,7 +28,7 @@
 
     self.controller = [[MoviesListViewController alloc] init];
 
-    self.mockOutput = OCMProtocolMock(@protocol(MoviesListViewOutput));
+    self.mockOutput = OCMProtocolMock(@protocol(MoviesListPresenterInterface));
 
     self.controller.output = self.mockOutput;
 }

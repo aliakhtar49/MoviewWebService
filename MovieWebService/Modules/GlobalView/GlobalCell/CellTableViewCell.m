@@ -8,7 +8,10 @@
 
 #import "CellTableViewCell.h"
 
+
+
 @implementation CellTableViewCell
+
 
 - (void)awakeFromNib {
     [super awakeFromNib];

@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+
+
+
 @interface CellTableViewCell : UITableViewCell
+
 @property (strong, nonatomic) IBOutlet UILabel *name;
 @property (strong, nonatomic) IBOutlet UILabel *date;
 @property (strong, nonatomic) IBOutlet UILabel *filmRating;
