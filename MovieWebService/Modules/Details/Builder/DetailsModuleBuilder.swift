@@ -2,15 +2,15 @@
 //  DetailsModuleBuilder.swift
 //  MovieWebService
 //
-//  Created by testDev on 11/04/2017.
-//  Copyright © 2017 Agoda Services Co. Ltd. All rights reserved.
+//  Created by Ali Akhtar on 11/04/2017.
+//  Copyright © 2018 TestCompany. All rights reserved.
 //
 
 import UIKit
 
 @objc class DetailsModuleBuilder: NSObject {
 
-    func build(with data: Any) -> UIViewController {
+    func build(with data: Film) -> UIViewController {
 
         let viewController = DetailsViewController()
 
@@ -26,7 +26,7 @@ import UIKit
 
         presenter.interactor = interactor
         viewController.output = presenter
-        viewController.director = data as? Director
+       // viewController.director = data
 
         return viewController
     }

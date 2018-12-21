@@ -2,8 +2,8 @@
 //  MoviesListPresenter.m
 //  MovieWebService
 //
-//  Created by testDev on 11/04/2017.
-//  Copyright © 2017 Agoda Services Co. Ltd. All rights reserved.
+//  Created by Ali Akhtar on 11/04/2017.
+//  Copyright © 2018 TestCompany. All rights reserved.
 //
 
 #import "MoviesListPresenter.h"
@@ -11,31 +11,36 @@
 #import "MoviesListViewInput.h"
 #import "MoviesListInteractorInput.h"
 #import "MoviesListRouterInput.h"
-
+#import "NSArray+Map.h"
+#import "MovieWebService-Swift.h"
 @implementation MoviesListPresenter {
-    NSArray *filmsArray;
-}
 
+    NSArray *cellTableViewCellViewModels;
+  
+}
 - (void)configureModule {
  }
-
-
 
 #pragma mark - MoviesListPresenterInterface Delegates
 
 - (NSInteger)numberOfRowsInSection:(NSInteger)section {
-    return filmsArray.count;
+    return cellTableViewCellViewModels.count;
 }
 - (void)loadContent {
-    
     [self.interactor retrieveMovies];
 }
 - (NSArray*) getFilmsData {
-    return filmsArray;
+    return cellTableViewCellViewModels;
 }
 - (void)didTriggerViewReadyEvent {
     [self.view setupInitialState];
     [self.view setupView];
+}
+- (CellTableViewCellViewModel*) getCellTableViewCellViewModel:(NSInteger) index {
+    return cellTableViewCellViewModels[index];
+}
+- (void) didSelectRowAtIndexPath:(NSIndexPath*) indexPath {
+    [self.router pushToFilmDetailScreenWithData:nil];
 }
 
 #pragma mark - MoviesListInteractorOutputDelegates
@@ -43,7 +48,13 @@
     
 }
 - (void)didRetrieveFilms:(NSArray *)films {
-    filmsArray = films;
+    
+   cellTableViewCellViewModels =  [films mapObjectsUsingBlock:^(id obj, NSUInteger idx) {
+        return [[CellTableViewCellViewModel alloc]init:obj];
+    }];
     [self.view reloadView];
 }
+
 @end
+
+

@@ -25,7 +25,8 @@ class BaseRouter: NSObject {
     func createBaseRoute() {
         if let  movieListViewController = MoviesListBuilder().build() {
             navigationController.viewControllers = [movieListViewController]
-            self.window?.rootViewController = navigationController
+            window?.rootViewController = navigationController
+            window?.makeKeyAndVisible()
         }
         
     }

@@ -2,8 +2,8 @@
 //  MoviesListViewController.m
 //  MovieWebService
 //
-//  Created by testDev on 11/04/2017.
-//  Copyright © 2017 Agoda Services Co. Ltd. All rights reserved.
+//  Created by Ali Akhtar on 11/04/2017.
+//  Copyright © 2018 TestCompany. All rights reserved.
 //
 
 #import "MoviesListViewController.h"
@@ -25,7 +25,6 @@
 @implementation MoviesListViewController
 
 #pragma mark - Life cycle
-
 - (void)viewDidLoad {
     
     [super viewDidLoad];
@@ -33,8 +32,9 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [self.presenter loadContent];
     
+    [super viewWillAppear:animated];
+    [self.presenter loadContent];
 }
 
 
@@ -53,6 +53,7 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([CellTableViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([CellTableViewCell class])];
 }
 
 #pragma mark - UITableViewDelegates
@@ -65,54 +66,15 @@
     return kCellTableViewCellHeight;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"CellTableViewCell";
     
-    CellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[NSBundle mainBundle] loadNibNamed:@"CellTableViewCell" owner:self options:nil] firstObject];
-        //cell = self.movieCell;
-        //self.movieCell = nil;
-    }
-    NSArray* filem = [self.presenter getFilmsData];
-    NSLog(@"%@",[[filem firstObject] releaseDate]);
-    Film *film = [filem firstObject];
-    cell.name.text = film.name;
-    
-    NSCalendar* cal = [NSCalendar currentCalendar];
-    NSString* dateText;
-    NSDateFormatter *f = [[NSDateFormatter alloc] init];
-    [f setDateStyle:NSDateFormatterMediumStyle];
-    [f setCalendar:cal];
-    [f setLocale:[NSLocale currentLocale]];
-    dateText = [f stringFromDate:film.releaseDate];
-    
-    cell.date.text = dateText;
-    
-    NSString *filmRatingText;
-    switch (film.filmRating) {
-        case G:
-            filmRatingText = @"G";
-        case PG:
-            filmRatingText = @"PG";
-        case PG13:
-            filmRatingText = @"PG13";
-        case R:
-            filmRatingText = @"R";
-        default:
-            break;
-    }
-    cell.filmRating.text = filmRatingText;
-    cell.rating.text = [[NSNumber numberWithDouble:film.rating] stringValue];
-    
+    CellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([CellTableViewCell class])];
+    [cell populateCell:[self.presenter getCellTableViewCellViewModel:indexPath.row]];
     return cell;
 }
 
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    //    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    //    AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    //    Film *film = [films objectAtIndex:indexPath.row];
-    //    DetailsModuleBuilder *builder = [DetailsModuleBuilder new];
-    // [appDelegate.navigationController pushViewController:[builder buildWith:film] animated:YES];
+    [self.presenter didSelectRowAtIndexPath:indexPath];
 }
 
 @end
