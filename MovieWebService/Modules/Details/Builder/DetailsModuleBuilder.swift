@@ -25,8 +25,8 @@ import UIKit
         interactor.output = presenter
 
         presenter.interactor = interactor
-        viewController.output = presenter
-       // viewController.director = data
+        viewController.presenter = presenter
+       viewController.film = data
 
         return viewController
     }

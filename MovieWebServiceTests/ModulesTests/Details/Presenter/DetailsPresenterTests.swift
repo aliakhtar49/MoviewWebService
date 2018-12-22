@@ -51,7 +51,7 @@ class DetailsPresenterTests: XCTestCase {
 
     }
 
-    class MockView: DetailsViewInput {
+    class MockView: DetailsViewProtocol {
 		
     }
 

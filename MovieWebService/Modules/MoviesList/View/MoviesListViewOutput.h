@@ -11,7 +11,7 @@
 #import "Film.h"
 
 
-@class CellTableViewCellViewModel;
+@class CellTableViewCellPresenter;
 
 @protocol MoviesListPresenterInterface <NSObject>
 
@@ -19,7 +19,14 @@
 - (void) loadContent;
 - (NSInteger)numberOfRowsInSection:(NSInteger)section;
 - (NSArray*) getFilmsData;
-- (CellTableViewCellViewModel*) getCellTableViewCellViewModel:(NSInteger) index;
+- (CellTableViewCellPresenter*) getCellTableViewCellPresenter:(NSInteger) index;
 - (void) didSelectRowAtIndexPath:(NSIndexPath*) indexPath;
+
+@end
+
+
+@protocol CellTableViewCellPresenterProtocol<NSObject>
+
+- (void) retrieveContents;
 
 @end

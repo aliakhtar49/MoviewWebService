@@ -7,7 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import <OCMock/OCMock.h>
+#import "OCMock.h"
 
 #import "MoviesListViewController.h"
 
@@ -16,7 +16,6 @@
 @interface MoviesListViewControllerTests : XCTestCase
 
 @property (nonatomic, strong) MoviesListViewController *controller;
-
 @property (nonatomic, strong) id mockOutput;
 
 @end
@@ -30,7 +29,7 @@
 
     self.mockOutput = OCMProtocolMock(@protocol(MoviesListPresenterInterface));
 
-    self.controller.output = self.mockOutput;
+    self.controller.presenter = self.mockOutput;
 }
 
 - (void)tearDown {
@@ -40,15 +39,30 @@
 
     [super tearDown];
 }
+- (void)testNothing;
+{
+    XCTAssertTrue(YES, @"");
+}
 
 - (void)testThatControllerNotifiesPresenterOnDidLoad {
-	// given
 
-	// when
-	[self.controller viewDidLoad];
-
-	// then
-	OCMVerify([self.mockOutput didTriggerViewReadyEvent]);
+    [self.controller viewDidLoad];
+    OCMVerify([self.mockOutput didTriggerViewReadyEvent]);
 }
+
+- (void)testThatControllerNotifiesPresenterOnViewWillAppear {
+    
+    [self.controller viewWillAppear:YES];
+    OCMVerify([self.mockOutput loadContent]);
+}
+
+//- (void)testThatControllerReloadTableOnReloadView {
+//    
+//    [self.controller reloadView];
+//    OCMVerify([self.mockOutput.tab loadContent]);
+//}
+
+
+
 
 @end

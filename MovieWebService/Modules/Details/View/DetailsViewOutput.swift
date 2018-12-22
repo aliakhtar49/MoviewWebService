@@ -6,7 +6,7 @@
 //  Copyright © 2018 TestCompany. All rights reserved.
 //
 
-protocol DetailsViewOutput {
+protocol DetailsPresenterProtocol {
 
     func viewIsReady()
 

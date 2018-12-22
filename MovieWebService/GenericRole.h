@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@class Film;
 
 @interface GenericRole : NSObject
 
@@ -17,7 +16,6 @@
 @property (nonatomic, strong) NSDate *dateOfBirth;
 @property (nonatomic) BOOL nominated;
 
-@property (nonatomic, weak) Film *film;
 
 - (id)initWithData:(NSDictionary *)data;
 

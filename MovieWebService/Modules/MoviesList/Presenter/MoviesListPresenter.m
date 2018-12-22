@@ -36,7 +36,7 @@
     [self.view setupInitialState];
     [self.view setupView];
 }
-- (CellTableViewCellViewModel*) getCellTableViewCellViewModel:(NSInteger) index {
+- (CellTableViewCellPresenter*) getCellTableViewCellPresenter:(NSInteger) index {
     return cellTableViewCellViewModels[index];
 }
 - (void) didSelectRowAtIndexPath:(NSIndexPath*) indexPath {
@@ -50,7 +50,7 @@
 - (void)didRetrieveFilms:(NSArray *)films {
     
    cellTableViewCellViewModels =  [films mapObjectsUsingBlock:^(id obj, NSUInteger idx) {
-        return [[CellTableViewCellViewModel alloc]init:obj];
+        return [[CellTableViewCellPresenter alloc]init:obj];
     }];
     [self.view reloadView];
 }

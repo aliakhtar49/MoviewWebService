@@ -54,13 +54,9 @@
 
 
 - (void)testThatPresenterHandlesViewReadyEvent {
-    // given
-
-
-    // when
+   
     [self.presenter didTriggerViewReadyEvent];
-
-    // then
+    self
     OCMVerify([self.mockView setupInitialState]);
 }
 

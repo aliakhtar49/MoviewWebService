@@ -7,7 +7,7 @@
 //
 
 #import "CellTableViewCell.h"
-#import "MovieWebService-Swift.h"
+
 
 @interface CellTableViewCell() {
     
@@ -15,16 +15,29 @@
 @end
 
 
-@implementation CellTableViewCell {
-    
+@implementation CellTableViewCell{
+ 
 }
 
 
-- (void) populateCell:(CellTableViewCellViewModel*) cellTableViewCellViewModel {
-    self.name.text = cellTableViewCellViewModel.nameString;
-    self.date.text = cellTableViewCellViewModel.releaseDateString;
-    self.filmRating.text = cellTableViewCellViewModel.filmRatingString;
-    self.rating.text = cellTableViewCellViewModel.ratingString;
+- (void) populateCell{
+    [self.presenter retrieveContents];
 }
+
+- (void) showFilmRatingViewWith:(NSString*)filmRatingText {
+    self.filmRating.text = filmRatingText;
+}
+- (void) showReleaseDateViewWith:(NSString*)releaseDateString {
+    self.date.text = releaseDateString;
+}
+- (void) showFilmNameViewWith:(NSString*)filmNameString{
+    self.name.text = filmNameString;
+}
+- (void) showRatingViewWith:(NSString*)ratingString{
+    self.rating.text = ratingString;
+}
+
+
+
 
 @end

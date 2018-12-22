@@ -14,9 +14,12 @@
 		3A1E161A2EB88942BBCBC76E /* DetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB0BE1422967EB71C2F2F0F /* DetailsPresenter.swift */; };
 		3A3C9A7021CB638D00C53EB6 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C9A6F21CB638D00C53EB6 /* BaseNavigationController.swift */; };
 		3A3C9A7221CB63DA00C53EB6 /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C9A7121CB63DA00C53EB6 /* BaseRouter.swift */; };
-		3A3C9A7A21CBCBA600C53EB6 /* CellTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C9A7921CBCBA600C53EB6 /* CellTableViewCellViewModel.swift */; };
+		3A3C9A7A21CBCBA600C53EB6 /* CellTableViewCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C9A7921CBCBA600C53EB6 /* CellTableViewCellPresenter.swift */; };
 		3A3C9A7D21CBDD5A00C53EB6 /* Double+Conversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C9A7C21CBDD5A00C53EB6 /* Double+Conversion.swift */; };
 		3A3C9A8021CBDFC300C53EB6 /* NSArray+Map.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C9A7F21CBDFC300C53EB6 /* NSArray+Map.m */; };
+		3A3C9AA321CCE5A000C53EB6 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A3C9AA121CCD89600C53EB6 /* libOCMock.a */; };
+		3A3C9AA421CCF1C200C53EB6 /* MoviesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4921FCC65F429A0DF58F70D4 /* MoviesListViewController.m */; };
+		3A3C9AA521CD147B00C53EB6 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39CE7C8FB3C38D6D501CE54 /* DetailsViewController.swift */; };
 		3E428908FB520AB4DF020ACC /* DetailsViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26433A0B06861EBAF23B96D3 /* DetailsViewInput.swift */; };
 		3E5F7753DD2B76D8AB385033 /* DetailsInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0694EA765A10A05BD4473FE /* DetailsInteractorInput.swift */; };
 		46B851E6C788D142687ED94F /* Pods_MovieWebService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43D5E7435EFF0197EE769D38 /* Pods_MovieWebService.framework */; };
@@ -92,10 +95,20 @@
 		3A3C9A6F21CB638D00C53EB6 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		3A3C9A7121CB63DA00C53EB6 /* BaseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
 		3A3C9A7521CBC1EE00C53EB6 /* ViewConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewConstants.h; sourceTree = "<group>"; };
-		3A3C9A7921CBCBA600C53EB6 /* CellTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellTableViewCellViewModel.swift; sourceTree = "<group>"; };
+		3A3C9A7921CBCBA600C53EB6 /* CellTableViewCellPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellTableViewCellPresenter.swift; sourceTree = "<group>"; };
 		3A3C9A7C21CBDD5A00C53EB6 /* Double+Conversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Conversion.swift"; sourceTree = "<group>"; };
 		3A3C9A7E21CBDFC300C53EB6 /* NSArray+Map.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+Map.h"; sourceTree = "<group>"; };
 		3A3C9A7F21CBDFC300C53EB6 /* NSArray+Map.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Map.m"; sourceTree = "<group>"; };
+		3A3C9A9721CCD89600C53EB6 /* OCMockObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMockObject.h; sourceTree = "<group>"; };
+		3A3C9A9821CCD89600C53EB6 /* OCMMacroState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMMacroState.h; sourceTree = "<group>"; };
+		3A3C9A9921CCD89600C53EB6 /* OCMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMock.h; sourceTree = "<group>"; };
+		3A3C9A9A21CCD89600C53EB6 /* NSNotificationCenter+OCMAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+OCMAdditions.h"; sourceTree = "<group>"; };
+		3A3C9A9B21CCD89600C53EB6 /* OCMStubRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMStubRecorder.h; sourceTree = "<group>"; };
+		3A3C9A9C21CCD89600C53EB6 /* OCMRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMRecorder.h; sourceTree = "<group>"; };
+		3A3C9A9D21CCD89600C53EB6 /* OCMLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMLocation.h; sourceTree = "<group>"; };
+		3A3C9A9E21CCD89600C53EB6 /* OCMConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMConstraint.h; sourceTree = "<group>"; };
+		3A3C9A9F21CCD89600C53EB6 /* OCMArg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMArg.h; sourceTree = "<group>"; };
+		3A3C9AA121CCD89600C53EB6 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libOCMock.a; sourceTree = "<group>"; };
 		43D5E7435EFF0197EE769D38 /* Pods_MovieWebService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieWebService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4436005FAD9733036C793E76 /* DetailsInteractorOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DetailsInteractorOutput.swift; sourceTree = "<group>"; };
 		4921FCC65F429A0DF58F70D4 /* MoviesListViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MoviesListViewController.m; sourceTree = "<group>"; };
@@ -172,6 +185,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A3C9AA321CCE5A000C53EB6 /* libOCMock.a in Frameworks */,
 				98DCD8E1A77375C8D2741246 /* Pods_MovieWebServiceTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -292,7 +306,7 @@
 				742C642A1E9C89E000B8E327 /* CellTableViewCell.h */,
 				742C642B1E9C89E000B8E327 /* CellTableViewCell.m */,
 				742C642C1E9C89E000B8E327 /* CellTableViewCell.xib */,
-				3A3C9A7921CBCBA600C53EB6 /* CellTableViewCellViewModel.swift */,
+				3A3C9A7921CBCBA600C53EB6 /* CellTableViewCellPresenter.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -305,6 +319,47 @@
 				3A3C9A7F21CBDFC300C53EB6 /* NSArray+Map.m */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		3A3C9A9421CCD89600C53EB6 /* usr */ = {
+			isa = PBXGroup;
+			children = (
+				3A3C9A9521CCD89600C53EB6 /* include */,
+				3A3C9AA021CCD89600C53EB6 /* lib */,
+			);
+			path = usr;
+			sourceTree = "<group>";
+		};
+		3A3C9A9521CCD89600C53EB6 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				3A3C9A9621CCD89600C53EB6 /* OCMock */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		3A3C9A9621CCD89600C53EB6 /* OCMock */ = {
+			isa = PBXGroup;
+			children = (
+				3A3C9A9721CCD89600C53EB6 /* OCMockObject.h */,
+				3A3C9A9821CCD89600C53EB6 /* OCMMacroState.h */,
+				3A3C9A9921CCD89600C53EB6 /* OCMock.h */,
+				3A3C9A9A21CCD89600C53EB6 /* NSNotificationCenter+OCMAdditions.h */,
+				3A3C9A9B21CCD89600C53EB6 /* OCMStubRecorder.h */,
+				3A3C9A9C21CCD89600C53EB6 /* OCMRecorder.h */,
+				3A3C9A9D21CCD89600C53EB6 /* OCMLocation.h */,
+				3A3C9A9E21CCD89600C53EB6 /* OCMConstraint.h */,
+				3A3C9A9F21CCD89600C53EB6 /* OCMArg.h */,
+			);
+			path = OCMock;
+			sourceTree = "<group>";
+		};
+		3A3C9AA021CCD89600C53EB6 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				3A3C9AA121CCD89600C53EB6 /* libOCMock.a */,
+			);
+			path = lib;
 			sourceTree = "<group>";
 		};
 		3AD4387689456E863A555DEF /* ModulesTests */ = {
@@ -377,6 +432,7 @@
 		742C63DC1E9C750600B8E327 = {
 			isa = PBXGroup;
 			children = (
+				3A3C9A9421CCD89600C53EB6 /* usr */,
 				742C63E71E9C750600B8E327 /* MovieWebService */,
 				742C64011E9C750700B8E327 /* MovieWebServiceTests */,
 				742C640C1E9C750700B8E327 /* MovieWebServiceUITests */,
@@ -822,7 +878,7 @@
 				742C63ED1E9C750600B8E327 /* AppDelegate.m in Sources */,
 				742C643B1E9C917B00B8E327 /* Director.m in Sources */,
 				742C64351E9C90F100B8E327 /* Actor.m in Sources */,
-				3A3C9A7A21CBCBA600C53EB6 /* CellTableViewCellViewModel.swift in Sources */,
+				3A3C9A7A21CBCBA600C53EB6 /* CellTableViewCellPresenter.swift in Sources */,
 				742C64381E9C913200B8E327 /* GenericRole.m in Sources */,
 				742C642D1E9C89E000B8E327 /* CellTableViewCell.m in Sources */,
 				742C63EA1E9C750600B8E327 /* main.m in Sources */,
@@ -862,9 +918,11 @@
 				EC2947B31729FA900482C447 /* MoviesListRouterTests.m in Sources */,
 				E2172FD11664F9A934E6AFB4 /* DetailsModuleBuilderTests.swift in Sources */,
 				724C4C1CE4007A2FE908E02B /* DetailsViewTests.swift in Sources */,
+				3A3C9AA421CCF1C200C53EB6 /* MoviesListViewController.m in Sources */,
 				9DD4F619A27419084F677EB0 /* DetailsInteractorTests.swift in Sources */,
 				D8BF340B1715D2CCC3DEB3B3 /* DetailsPresenterTests.swift in Sources */,
 				0BE549F9BEDE75E7D36554D2 /* DetailsRouterTests.swift in Sources */,
+				3A3C9AA521CD147B00C53EB6 /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1006,6 +1064,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MovieWebService/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MovieWebService/usr/lib",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = agodatest.MovieWebService;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "MovieWebService/Movie-Bridging-Header.h";
@@ -1020,6 +1082,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MovieWebService/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MovieWebService/usr/lib",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = agodatest.MovieWebService;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "MovieWebService/Movie-Bridging-Header.h";
@@ -1032,11 +1098,27 @@
 			baseConfigurationReference = A04472FFCF6FDE683F18F480 /* Pods-MovieWebServiceTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Masonry\"",
+					"$(PROJECT_DIR)/",
+					"$(PROJECT_DIR)/MovieWebService",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/usr/include",
+				);
 				INFOPLIST_FILE = MovieWebServiceTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/usr/lib",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = agodatest.MovieWebServiceTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				SYSTEM_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/usr/include $(inherited) /Users/aliakhtar/Documents/iOS Projects/MoviewWebService/MovieWebService/usr/lib /Users/aliakhtar/Documents/iOS Projects/MoviewWebService/MovieWebService/usr/include";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MovieWebService.app/MovieWebService";
 			};
 			name = Debug;
@@ -1046,11 +1128,27 @@
 			baseConfigurationReference = 7A2853701712C15EEF299728 /* Pods-MovieWebServiceTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Masonry\"",
+					"$(PROJECT_DIR)/",
+					"$(PROJECT_DIR)/MovieWebService",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/usr/include",
+				);
 				INFOPLIST_FILE = MovieWebServiceTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/usr/lib",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = agodatest.MovieWebServiceTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				SYSTEM_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/usr/include $(inherited) /Users/aliakhtar/Documents/iOS Projects/MoviewWebService/MovieWebService/usr/lib /Users/aliakhtar/Documents/iOS Projects/MoviewWebService/MovieWebService/usr/include";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MovieWebService.app/MovieWebService";
 			};
 			name = Release;

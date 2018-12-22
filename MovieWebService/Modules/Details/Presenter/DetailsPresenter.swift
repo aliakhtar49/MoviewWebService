@@ -6,9 +6,9 @@
 //  Copyright © 2018 TestCompany. All rights reserved.
 //
 
-class DetailsPresenter: DetailsModuleInput, DetailsViewOutput, DetailsInteractorOutput {
+class DetailsPresenter: DetailsModuleInput, DetailsPresenterProtocol, DetailsInteractorOutput {
 
-    weak var view: DetailsViewInput!
+    weak var view: DetailsViewProtocol!
     var interactor: DetailsInteractorInput!
     var router: DetailsRouterInput!
 

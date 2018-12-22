@@ -13,11 +13,12 @@
 #import "Film.h"
 #import "CellTableViewCell.h"
 #import "ViewConstants.h"
+#import "MovieWebService-Swift.h"
 
 #pragma mark - Private Interface
 @interface MoviesListViewController() {
 }
-@property(nonatomic,strong) UITableView *tableView;
+@property(nonatomic,weak) IBOutlet UITableView *movieListTableView;
 @end
 
 
@@ -45,15 +46,11 @@
 }
 
 - (void)reloadView {
-    [self.tableView reloadData];
+    [self.movieListTableView reloadData];
 }
 - (void)setupView {
-    
-    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-    [self.view addSubview:self.tableView];
-    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([CellTableViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([CellTableViewCell class])];
+
+    [self.movieListTableView registerNib:[UINib nibWithNibName:NSStringFromClass([CellTableViewCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([CellTableViewCell class])];
 }
 
 #pragma mark - UITableViewDelegates
@@ -68,7 +65,10 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     CellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([CellTableViewCell class])];
-    [cell populateCell:[self.presenter getCellTableViewCellViewModel:indexPath.row]];
+    CellTableViewCellPresenter* presenter = [self.presenter getCellTableViewCellPresenter:indexPath.row];
+    cell.presenter = presenter ;
+    presenter.view = cell;
+    [cell populateCell];
     return cell;
 }
 

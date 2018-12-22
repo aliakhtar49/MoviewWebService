@@ -22,7 +22,7 @@ class DetailsViewTests: XCTestCase {
         output = MockOutput()
 		
         viewController = DetailsViewController()
-        viewController.output = output
+       // viewController.output = output
     }
 
     override func tearDown() {
@@ -45,12 +45,12 @@ class DetailsViewTests: XCTestCase {
 
     // MARK: - Mock
 
-    class MockOutput: DetailsViewOutput {
-        var viewIsReadyDidCall: Bool = false
-
-        func viewIsReady() {
-            viewIsReadyDidCall = true
-        }
-		
-    }
+//    class MockOutput: DetailsPresenterProtocol {
+//        var viewIsReadyDidCall: Bool = false
+//
+//        func viewIsReady() {
+//            viewIsReadyDidCall = true
+//        }
+//        
+//    }
 }

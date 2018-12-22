@@ -7,18 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MovieWebService-Swift.h"
 
-@class CellTableViewCellViewModel;
+@protocol CellTableViewCellPresenterProtocol;
+@protocol CellTableViewCellViewProtocol;
 
 
 
-@interface CellTableViewCell : UITableViewCell
+
+@interface CellTableViewCell : UITableViewCell<CellTableViewCellViewProtocol>
 
 @property (strong, nonatomic) IBOutlet UILabel *name;
 @property (strong, nonatomic) IBOutlet UILabel *date;
 @property (strong, nonatomic) IBOutlet UILabel *filmRating;
 @property (strong, nonatomic) IBOutlet UILabel *rating;
 
-- (void) populateCell:(CellTableViewCellViewModel*) cellTableViewCellViewModel;
+@property (nonatomic, strong) id<CellTableViewCellPresenterProtocol> presenter;
+- (void) populateCell;
 
 @end

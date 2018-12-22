@@ -15,3 +15,17 @@
 - (void) reloadView;
 
 @end
+
+
+
+
+@protocol CellTableViewCellViewProtocol<NSObject>
+
+- (void) showFilmRatingViewWith:(NSString*)filmRatingText;
+- (void) showReleaseDateViewWith:(NSString*)releaseDateString;
+- (void) showFilmNameViewWith:(NSString*)filmNameString;
+- (void) showRatingViewWith:(NSString*)ratingString;
+
+
+@end
+
