@@ -8,14 +8,14 @@
 
 #import "MoviesListPresenter.h"
 
-#import "MoviesListViewInput.h"
+#import "MoviesListViewInterface.h"
 #import "MoviesListInteractorInput.h"
 #import "MoviesListRouterInput.h"
 #import "NSArray+Map.h"
 #import "MovieWebService-Swift.h"
 @implementation MoviesListPresenter {
 
-    NSArray *cellTableViewCellViewModels;
+    NSArray *cellTableViewCellPresenters;
   
 }
 - (void)configureModule {
@@ -24,23 +24,24 @@
 #pragma mark - MoviesListPresenterInterface Delegates
 
 - (NSInteger)numberOfRowsInSection:(NSInteger)section {
-    return cellTableViewCellViewModels.count;
+    return cellTableViewCellPresenters.count;
 }
 - (void)loadContent {
     [self.interactor retrieveMovies];
 }
 - (NSArray*) getFilmsData {
-    return cellTableViewCellViewModels;
+    return cellTableViewCellPresenters;
 }
 - (void)didTriggerViewReadyEvent {
     [self.view setupInitialState];
     [self.view setupView];
 }
 - (CellTableViewCellPresenter*) getCellTableViewCellPresenter:(NSInteger) index {
-    return cellTableViewCellViewModels[index];
+    return cellTableViewCellPresenters[index];
 }
 - (void) didSelectRowAtIndexPath:(NSIndexPath*) indexPath {
-    [self.router pushToFilmDetailScreenWithData:nil];
+    
+    [self.router pushToFilmDetailScreenWithData:[cellTableViewCellPresenters[indexPath.row]film]];
 }
 
 #pragma mark - MoviesListInteractorOutputDelegates
@@ -49,7 +50,7 @@
 }
 - (void)didRetrieveFilms:(NSArray *)films {
     
-   cellTableViewCellViewModels =  [films mapObjectsUsingBlock:^(id obj, NSUInteger idx) {
+   cellTableViewCellPresenters =  [films mapObjectsUsingBlock:^(id obj, NSUInteger idx) {
         return [[CellTableViewCellPresenter alloc]init:obj];
     }];
     [self.view reloadView];

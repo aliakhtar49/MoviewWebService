@@ -11,7 +11,8 @@
 
 @interface TappableLabel : UILabel
 
-@property (nonatomic, strong) id<TappableLabelDelegate> delegate;
+@property (nonatomic,weak) id<TappableLabelDelegate> delegate;
+- (instancetype)initWithFrame:(CGRect)frame delegate:(id<TappableLabelDelegate>)delegate;;
 
 @end
 

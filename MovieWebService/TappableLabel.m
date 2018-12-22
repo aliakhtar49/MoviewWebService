@@ -27,4 +27,15 @@
     }
 }
 
+- (instancetype)initWithFrame:(CGRect)frame delegate:(id<TappableLabelDelegate>)delegate
+{
+    self = [super initWithFrame:frame];
+    if (self)
+    {
+        self.userInteractionEnabled = YES;
+        self.delegate = delegate;
+    }
+    return self;
+}
+
 @end

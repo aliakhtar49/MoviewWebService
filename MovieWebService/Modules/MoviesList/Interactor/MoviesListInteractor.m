@@ -13,6 +13,7 @@
 
 @implementation MoviesListInteractor {
 }
+//TODO: Should be in some network Manager class 
 - (void)getFilmWithCallback:(void (^)(Film *film))callback {
     dispatch_async(dispatch_get_global_queue(QOS_CLASS_UTILITY, 0), ^{
         NSDictionary *data = @{

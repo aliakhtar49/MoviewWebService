@@ -6,7 +6,7 @@
 //  Copyright © 2018 TestCompany. All rights reserved.
 //
 
-#import "MoviesListViewOutput.h"
+#import "MoviesListPresenterInterface.h"
 #import "MoviesListInteractorOutput.h"
 #import "MoviesListModuleInput.h"
 

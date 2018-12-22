@@ -9,7 +9,7 @@
 import Foundation
 
 @objc
-public class CellTableViewCellPresenter: NSObject{
+class CellTableViewCellPresenter: NSObject{
     
     weak var view: CellTableViewCellViewProtocol?
     var film: Film
@@ -19,15 +19,6 @@ public class CellTableViewCellPresenter: NSObject{
         super.init()
         
     }
-  public func retrieveContents() {
-        retrieveFilmRating()
-        retrieveFormattedReleaseDate()
-        retrieveFilmName()
-        retrieveRating()
-    }
-}
-
-extension CellTableViewCellPresenter: CellTableViewCellPresenterProtocol {
     fileprivate func retrieveFilmRating() {
         
         let filmRatingText: String
@@ -49,6 +40,7 @@ extension CellTableViewCellPresenter: CellTableViewCellPresenterProtocol {
     }
     
     fileprivate func retrieveFormattedReleaseDate() {
+        //TODO: make a singelton date formatter since it's very CPU intensive operation 
         let calendar = NSCalendar.current
         let dateFormatter = DateFormatter()
         dateFormatter.calendar = calendar
@@ -62,6 +54,17 @@ extension CellTableViewCellPresenter: CellTableViewCellPresenterProtocol {
     }
     fileprivate func retrieveRating() {
         view?.showRatingView(with: film.rating.toString())
+    }
+  
+}
+
+extension CellTableViewCellPresenter: CellTableViewCellPresenterProtocol {
+    
+    func retrieveContents() {
+        retrieveFilmRating()
+        retrieveFormattedReleaseDate()
+        retrieveFilmName()
+        retrieveRating()
     }
     
 }

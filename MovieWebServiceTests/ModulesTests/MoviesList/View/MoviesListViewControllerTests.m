@@ -11,7 +11,7 @@
 
 #import "MoviesListViewController.h"
 
-#import "MoviesListViewOutput.h"
+#import "MoviesListPresenterInterface.h"
 
 @interface MoviesListViewControllerTests : XCTestCase
 

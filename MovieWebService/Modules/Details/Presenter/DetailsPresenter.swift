@@ -6,20 +6,46 @@
 //  Copyright © 2018 TestCompany. All rights reserved.
 //
 
-class DetailsPresenter: DetailsModuleInput, DetailsPresenterProtocol, DetailsInteractorOutput {
-
-    weak var view: DetailsViewProtocol!
-    var interactor: DetailsInteractorInput!
-    var router: DetailsRouterInput!
-
-    // MARK: - DetailsViewOutput
+class DetailsPresenter:DetailScreenPresenterProtocol {
+    weak var view: DetailScreenViewProtocol?
+    var router: DetailScreenRouterProtocol?
+    var interactor: DetailScreenInteractorInputProtocol?
     
-    func viewIsReady() {
 
+    var modelData: Film {
+        didSet {
+            
+        }
+    }
+    private var actorExpanded = false {
+        didSet {
+            view?.showOrHideActorNameAndTitleWith(actorExpanded)
+            view?.showOrHideActorScreenNameAndTitleWith(actorExpanded)
+            view?.showTapToShowViewMoreButtonTitleViewWith(actorExpanded ? DetailScreenConstants.showLessActionTitle : DetailScreenConstants.showMoreActionTitle)
+        }
     }
     
-    // MARK: - DetailsInteractorOutput
+    func viewIsReady() {
+        
+        view?.showActorNameViewWith(modelData.cast.first?.name ?? "")
+        view?.showActorNameTitleViewWith(DetailScreenConstants.actorNameTitle)
+        view?.showDirectorNameViewWith(modelData.director.name ?? "")
+        view?.showDirectorTitleViewWith(DetailScreenConstants.directorNameTitle)
+        view?.showActorScreenNameViewWith(modelData.cast.first?.screenName ?? "")
+        view?.showActorScreenNameTitleViewWith(DetailScreenConstants.actorScreenNameTitle)
+        actorExpanded = false
+    }
+    func didTapOnAddMoreButton() {
+        actorExpanded = !actorExpanded
+    }
     
-    
+    init(_ modelData: Film) {
+        self.modelData = modelData
+    }
     
 }
+
+extension DetailsPresenter: DetailScreenInteractorOutputProtocol {
+  
+}
+

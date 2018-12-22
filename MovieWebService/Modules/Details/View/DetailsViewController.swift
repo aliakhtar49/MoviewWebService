@@ -8,65 +8,94 @@
 
 import UIKit
 
-class DetailsViewController: UIViewController, DetailsViewProtocol{
-
-    var presenter: DetailsPresenterProtocol!
-    public var film: Film!
-
-    var directorName: UILabel!
-    var directorNameValue: UILabel!
-    var tapToShowMore: TappableLabel!
-    var actorName: UILabel!
-    var actorScreenName: UILabel!
-
-    // MARK: Life cycle
+final class DetailsViewController: UIViewController, DetailScreenViewProtocol,DetailScreenModuleProtocol{
+    var presenter: DetailScreenPresenterProtocol?
+    weak var delegate: DetailScreenModuleProtocol?
     
+    
+    private let directorTitle = UILabel(frame: CGRect(origin: CGPoint(x: DetailScreenConstants.xOffset, y: 80), size: DetailScreenConstants.boxSize))
+    private let directorName: UILabel = {
+        let label = UILabel(frame: CGRect(origin: CGPoint(x: DetailScreenConstants.xOffset, y: 120), size: DetailScreenConstants.boxSize))
+        label.font = label.font.withSize(DetailScreenConstants.reducedFontSize)
+        return label
+    }()
+    
+    private lazy var tapToShowMore = TappableLabel(frame: CGRect(origin: CGPoint(x: DetailScreenConstants.xOffset, y: 180), size: DetailScreenConstants.boxSize), delegate: self)!
+    
+    fileprivate let actorNameTitle = UILabel(frame: CGRect(origin: CGPoint(x: DetailScreenConstants.xOffset, y: 220), size: DetailScreenConstants.boxSize))
+    fileprivate let actorName: UILabel = {
+        let label = UILabel(frame: CGRect(origin: CGPoint(x: DetailScreenConstants.xOffset, y: 260), size: DetailScreenConstants.boxSize))
+        label.font = label.font.withSize(DetailScreenConstants.reducedFontSize)
+        return label
+    }()
+    
+    fileprivate let actorScreenNameTitle = UILabel(frame: CGRect(origin: CGPoint(x: DetailScreenConstants.xOffset, y: 300), size: DetailScreenConstants.boxSize))
+    fileprivate let actorScreenName: UILabel = {
+        let label = UILabel(frame: CGRect(origin: CGPoint(x: DetailScreenConstants.xOffset, y: 340), size: DetailScreenConstants.boxSize))
+        label.font = label.font.withSize(DetailScreenConstants.reducedFontSize)
+        return label
+    }()
+    
+    private func addSubviews() {
+        view.addSubview(directorTitle)
+        view.addSubview(directorName)
+        view.addSubview(tapToShowMore)
+        view.addSubview(actorNameTitle)
+        view.addSubview(actorName)
+        view.addSubview(actorScreenNameTitle)
+        view.addSubview(actorScreenName)
+    }
+  
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter.viewIsReady()
-        view = UIView()
-        view.backgroundColor = .white
-
-        directorName = UILabel()
-        view.addSubview(directorName)
-        directorName.frame = CGRect(x: 20, y: 100, width: 200, height: 30)
-        directorName.text = "Director Name"
-//
-        directorNameValue = UILabel()
-        view.addSubview(directorNameValue)
-        directorNameValue.frame = CGRect(x: 20, y: 150, width: 200, height: 30)
-    //    directorNameValue.text = director.name;
-
-       tapToShowMore = TappableLabel()
-        view.addSubview(tapToShowMore)
-        tapToShowMore.frame = CGRect(x: 20, y: 200, width: 200, height: 30)
-        tapToShowMore.text = "Tap here to show more"
-     //   tapToShowMore.delegate = self
-
-        actorName = UILabel()
-        view.addSubview(actorName)
-        actorName.frame = CGRect(x: 20, y: 240, width: 200, height: 30)
-
-        actorScreenName = UILabel()
-        view.addSubview(actorScreenName)
-        actorScreenName.frame = CGRect(x: 20, y: 270, width: 200, height: 30)
-        actorName.isHidden = true
-        actorScreenName.isHidden = true
-
-//        let actor: Actor = director.film.cast?[0] as! Actor
-//        actorName.text = director.name;
-     //   actorScreenName.text = actor.screenName;
+    
+        addSubviews()
+        presenter?.viewIsReady()
 
     }
-
-    deinit {
-        
+    
+    
+    //DetailScreenViewProtocol  Methods
+    func showDirectorNameViewWith(_ directorNameText: String) {
+        directorName.text = directorNameText
     }
-    // MARK: DetailsViewInput
-
-    func didReceiveTouch() {
-        actorName.isHidden = false
-        actorScreenName.isHidden = false
+    func showDirectorTitleViewWith(_ directorTitleText: String) {
+        directorTitle.text = directorTitleText
     }
-
+    
+    func showActorScreenNameViewWith(_ actorScreenNameText: String) {
+        actorScreenName.text = actorScreenNameText
+    }
+    func showActorScreenNameTitleViewWith(_ actorScreenNameTitleText: String) {
+        actorScreenNameTitle.text = actorScreenNameTitleText
+    }
+    func showActorNameViewWith(_ actorNameText: String) {
+        actorName.text = actorNameText
+    }
+    func showActorNameTitleViewWith(_ actorNameTitleText: String) {
+        actorNameTitle.text = actorNameTitleText
+    }
+    func showTapToShowViewMoreButtonTitleViewWith(_ text: String) {
+        tapToShowMore.text = text
+    }
+    func showOrHideActorNameAndTitleWith(_ isToShow: Bool) {
+        actorNameTitle.isHidden = !isToShow
+        actorName.isHidden = !isToShow
+    }
+    func showOrHideActorScreenNameAndTitleWith(_ isToShow: Bool) {
+        actorScreenNameTitle.isHidden = !isToShow
+        actorScreenName.isHidden = !isToShow
+    }
+    
 }
+
+
+extension DetailsViewController: TappableLabelDelegate {
+    func didReceiveTouch() {
+        self.navigationController?.pushViewController(MoviesListBuilder().build(), animated: false)
+        
+       // presenter?.didTapOnAddMoreButton()
+    }
+  
+}
+

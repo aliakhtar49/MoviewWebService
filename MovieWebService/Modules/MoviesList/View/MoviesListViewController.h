@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "MoviesListViewInput.h"
+#import "MoviesListViewInterface.h"
 
 
 @protocol MoviesListPresenterInterface;

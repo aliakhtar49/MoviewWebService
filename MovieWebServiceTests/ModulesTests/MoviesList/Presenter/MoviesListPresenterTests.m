@@ -11,7 +11,7 @@
 
 #import "MoviesListPresenter.h"
 
-#import "MoviesListViewInput.h"
+#import "MoviesListViewInterface.h"
 #import "MoviesListInteractorInput.h"
 #import "MoviesListRouterInput.h"
 

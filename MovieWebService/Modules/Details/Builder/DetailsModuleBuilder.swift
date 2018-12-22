@@ -12,23 +12,22 @@ import UIKit
 
     func build(with data: Film) -> UIViewController {
 
-        let viewController = DetailsViewController()
-
+        let sb = UIStoryboard(name: "MoviewDetailView", bundle: nil)
+        let movieDetailScreenViewController = sb.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
         let router = DetailsRouter()
-        router.viewController = viewController
+        router.viewController = movieDetailScreenViewController
 
-        let presenter = DetailsPresenter()
-        presenter.view = viewController
+        let presenter = DetailsPresenter(data)
+        presenter.view = movieDetailScreenViewController
         presenter.router = router
 
         let interactor = DetailsInteractor()
-        interactor.output = presenter
+        interactor.presenter = presenter
 
         presenter.interactor = interactor
-        viewController.presenter = presenter
-       viewController.film = data
-
-        return viewController
+        movieDetailScreenViewController.presenter = presenter
+        
+        return movieDetailScreenViewController
     }
 
 }

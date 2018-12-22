@@ -17,7 +17,7 @@
 @implementation MoviesListBuilder
 
 - (UIViewController *)build {
-    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"MovieList" bundle:nil];
     MoviesListViewController * viewController = (MoviesListViewController *)[sb instantiateViewControllerWithIdentifier:@"MoviesListViewController"];
     MoviesListRouter *router = [MoviesListRouter new];
     router.viewController = viewController;
