@@ -8,19 +8,19 @@
 
 import UIKit
 
-final class DetailsViewController: UIViewController, DetailScreenViewProtocol,DetailScreenModuleProtocol{
+final class DetailsViewController: UIViewController,DetailScreenModuleProtocol{
     var presenter: DetailScreenPresenterProtocol?
     weak var delegate: DetailScreenModuleProtocol?
     
     
-    private let directorTitle = UILabel(frame: CGRect(origin: CGPoint(x: DetailScreenConstants.xOffset, y: 80), size: DetailScreenConstants.boxSize))
-    private let directorName: UILabel = {
+    fileprivate let directorTitle = UILabel(frame: CGRect(origin: CGPoint(x: DetailScreenConstants.xOffset, y: 80), size: DetailScreenConstants.boxSize))
+    fileprivate let directorName: UILabel = {
         let label = UILabel(frame: CGRect(origin: CGPoint(x: DetailScreenConstants.xOffset, y: 120), size: DetailScreenConstants.boxSize))
         label.font = label.font.withSize(DetailScreenConstants.reducedFontSize)
         return label
     }()
     
-    private lazy var tapToShowMore = TappableLabel(frame: CGRect(origin: CGPoint(x: DetailScreenConstants.xOffset, y: 180), size: DetailScreenConstants.boxSize), delegate: self)!
+    fileprivate lazy var tapToShowMore = TappableLabel(frame: CGRect(origin: CGPoint(x: DetailScreenConstants.xOffset, y: 180), size: DetailScreenConstants.boxSize), delegate: self)!
     
     fileprivate let actorNameTitle = UILabel(frame: CGRect(origin: CGPoint(x: DetailScreenConstants.xOffset, y: 220), size: DetailScreenConstants.boxSize))
     fileprivate let actorName: UILabel = {
@@ -51,11 +51,13 @@ final class DetailsViewController: UIViewController, DetailScreenViewProtocol,De
     
         addSubviews()
         presenter?.viewIsReady()
+        self.navigationItem.title = DetailScreenConstants.title
 
     }
     
-    
-    //DetailScreenViewProtocol  Methods
+}
+
+extension DetailsViewController: DetailScreenViewProtocol {
     func showDirectorNameViewWith(_ directorNameText: String) {
         directorName.text = directorNameText
     }
@@ -86,9 +88,7 @@ final class DetailsViewController: UIViewController, DetailScreenViewProtocol,De
         actorScreenNameTitle.isHidden = !isToShow
         actorScreenName.isHidden = !isToShow
     }
-    
 }
-
 
 extension DetailsViewController: TappableLabelDelegate {
     func didReceiveTouch() {

@@ -47,6 +47,7 @@ protocol DetailScreenPresenterProtocol: class {
     var router: DetailScreenRouterProtocol? { get set }
     var interactor : DetailScreenInteractorInputProtocol? { get set }
     func didTapOnAddMoreButton()
+    var actorExpanded: Bool { get set }
 }
 
 protocol DetailScreenInteractorOutputProtocol: class {

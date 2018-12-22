@@ -6,6 +6,8 @@
 //  Copyright © 2018 TestCompany. All rights reserved.
 //
 
+
+
 class DetailsInteractor: DetailScreenInteractorInputProtocol {
 
     weak var presenter: DetailScreenInteractorOutputProtocol?

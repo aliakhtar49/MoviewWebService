@@ -6,7 +6,7 @@
 //  Copyright © 2018 TestCompany. All rights reserved.
 //
 
-class DetailsPresenter:DetailScreenPresenterProtocol {
+public class DetailsPresenter:DetailScreenPresenterProtocol {
     weak var view: DetailScreenViewProtocol?
     var router: DetailScreenRouterProtocol?
     var interactor: DetailScreenInteractorInputProtocol?
@@ -17,7 +17,7 @@ class DetailsPresenter:DetailScreenPresenterProtocol {
             
         }
     }
-    private var actorExpanded = false {
+     var actorExpanded = false {
         didSet {
             view?.showOrHideActorNameAndTitleWith(actorExpanded)
             view?.showOrHideActorScreenNameAndTitleWith(actorExpanded)
