@@ -92,9 +92,7 @@ final class DetailsViewController: UIViewController, DetailScreenViewProtocol,De
 
 extension DetailsViewController: TappableLabelDelegate {
     func didReceiveTouch() {
-        self.navigationController?.pushViewController(MoviesListBuilder().build(), animated: false)
-        
-       // presenter?.didTapOnAddMoreButton()
+       presenter?.didTapOnAddMoreButton()
     }
   
 }
