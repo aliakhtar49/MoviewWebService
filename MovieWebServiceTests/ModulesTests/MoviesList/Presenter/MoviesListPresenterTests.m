@@ -8,12 +8,15 @@
 //
 #import <XCTest/XCTest.h>
 #import <OCMock/OCMock.h>
-//
+
+#import "MoviesListInteractor.h"
 #import "MoviesListPresenter.h"
-//
 #import "MoviesListViewInterface.h"
 #import "MoviesListInteractorInput.h"
 #import "MoviesListRouterInput.h"
+#import "MovieWebService-Swift.h"
+
+@class CellTableViewCellPresenter;
 
 
 @interface MoviesListPresenterTests : XCTestCase
@@ -65,16 +68,26 @@
     OCMVerify([self.mockView setupInitialState]);
 }
 - (void)testThatPresenterdidTriggerViewReadyEventTrigerredSetupViewMethodInView{
-    
     [self.presenter didTriggerViewReadyEvent];
     OCMVerify([self.mockView setupView]);
 }
 
-//- (void)testThatPresenterdidTriggerViewReadyEventTrigerredSetupViewMethodInViewdd{
-//    
-//    [self.mockInteractor didRetrieveFilms:[FilmModelStub buils]];
-//    OCMVerify([self.mockView setupView]);
-//}
+ - (void)testThatPresenterWhenFetchingDataReturingNumberOfRowsInSection{
+     [self.presenter didRetrieveFilms:@[[FilmModelStub buildFilmModelStub]]];
+     XCTAssertTrue([self.presenter numberOfRowsInSection:0] == 1);
+}
+- (void)testThatPresenterWhenFetchingDataPopulartingDataProperly{
+    [self.presenter didRetrieveFilms:@[[FilmModelStub buildFilmModelStub]]];
+    OCMVerify([self.mockView reloadView]);
+   
+}
+
+- (void)testThat{
+    [self.presenter didSelectRowAtIndexPath:nil];
+    OCMVerify([self.mockRouter pushToFilmDetailScreenWithData:nil]);
+    
+}
+
 
 
 @end

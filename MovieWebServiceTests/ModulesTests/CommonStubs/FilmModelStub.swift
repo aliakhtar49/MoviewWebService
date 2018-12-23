@@ -9,7 +9,8 @@
 import Foundation
 
 
-struct FilmModelStub {
+@objc
+class FilmModelStub: NSObject {
     static func buildFilmModelStub() -> Film {
         let mockData: [String : Any] = [
             "filmRating": 3, "languages":  ["English","Thai"],
