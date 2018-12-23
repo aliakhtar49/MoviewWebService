@@ -18,7 +18,6 @@
 - (void)didTriggerViewReadyEvent;
 - (void) loadContent;
 - (NSInteger)numberOfRowsInSection:(NSInteger)section;
-- (NSArray*) getFilmsData;
 - (CellTableViewCellPresenter*) getCellTableViewCellPresenter:(NSInteger) index;
 - (void) didSelectRowAtIndexPath:(NSIndexPath*) indexPath;
 

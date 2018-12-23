@@ -29,9 +29,6 @@
 - (void)loadContent {
     [self.interactor retrieveMovies];
 }
-- (NSArray*) getFilmsData {
-    return cellTableViewCellPresenters;
-}
 - (void)didTriggerViewReadyEvent {
     [self.view setupInitialState];
     [self.view setupView];

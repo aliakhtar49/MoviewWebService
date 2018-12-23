@@ -16,9 +16,10 @@
 #import "MovieWebService-Swift.h"
 
 #pragma mark - Private Interface
-@interface MoviesListViewController() {
-}
+@interface MoviesListViewController()
+
 @property(nonatomic,weak) IBOutlet UITableView *movieListTableView;
+
 @end
 
 
