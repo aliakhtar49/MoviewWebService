@@ -13,30 +13,30 @@ final class DetailsViewController: UIViewController,DetailScreenModuleProtocol{
     weak var delegate: DetailScreenModuleProtocol?
     
     
-    fileprivate let directorTitle = UILabel(frame: CGRect(origin: CGPoint(x: DetailScreenConstants.xOffset, y: 80), size: DetailScreenConstants.boxSize))
-    fileprivate let directorName: UILabel = {
+     let directorTitle = UILabel(frame: CGRect(origin: CGPoint(x: DetailScreenConstants.xOffset, y: 80), size: DetailScreenConstants.boxSize))
+     let directorName: UILabel = {
         let label = UILabel(frame: CGRect(origin: CGPoint(x: DetailScreenConstants.xOffset, y: 120), size: DetailScreenConstants.boxSize))
         label.font = label.font.withSize(DetailScreenConstants.reducedFontSize)
         return label
     }()
     
-    fileprivate lazy var tapToShowMore = TappableLabel(frame: CGRect(origin: CGPoint(x: DetailScreenConstants.xOffset, y: 180), size: DetailScreenConstants.boxSize), delegate: self)!
+     lazy var tapToShowMore = TappableLabel(frame: CGRect(origin: CGPoint(x: DetailScreenConstants.xOffset, y: 180), size: DetailScreenConstants.boxSize), delegate: self)!
     
-    fileprivate let actorNameTitle = UILabel(frame: CGRect(origin: CGPoint(x: DetailScreenConstants.xOffset, y: 220), size: DetailScreenConstants.boxSize))
-    fileprivate let actorName: UILabel = {
+     let actorNameTitle = UILabel(frame: CGRect(origin: CGPoint(x: DetailScreenConstants.xOffset, y: 220), size: DetailScreenConstants.boxSize))
+     let actorName: UILabel = {
         let label = UILabel(frame: CGRect(origin: CGPoint(x: DetailScreenConstants.xOffset, y: 260), size: DetailScreenConstants.boxSize))
         label.font = label.font.withSize(DetailScreenConstants.reducedFontSize)
         return label
     }()
     
-    fileprivate let actorScreenNameTitle = UILabel(frame: CGRect(origin: CGPoint(x: DetailScreenConstants.xOffset, y: 300), size: DetailScreenConstants.boxSize))
-    fileprivate let actorScreenName: UILabel = {
+     let actorScreenNameTitle = UILabel(frame: CGRect(origin: CGPoint(x: DetailScreenConstants.xOffset, y: 300), size: DetailScreenConstants.boxSize))
+     let actorScreenName: UILabel = {
         let label = UILabel(frame: CGRect(origin: CGPoint(x: DetailScreenConstants.xOffset, y: 340), size: DetailScreenConstants.boxSize))
         label.font = label.font.withSize(DetailScreenConstants.reducedFontSize)
         return label
     }()
     
-    private func addSubviews() {
+     func addSubviews() {
         view.addSubview(directorTitle)
         view.addSubview(directorName)
         view.addSubview(tapToShowMore)

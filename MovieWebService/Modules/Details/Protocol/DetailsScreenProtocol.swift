@@ -48,6 +48,8 @@ protocol DetailScreenPresenterProtocol: class {
     var interactor : DetailScreenInteractorInputProtocol? { get set }
     func didTapOnAddMoreButton()
     var actorExpanded: Bool { get set }
+    init(_ modelData: Film)
+    var modelData: Film { get set }
 }
 
 protocol DetailScreenInteractorOutputProtocol: class {

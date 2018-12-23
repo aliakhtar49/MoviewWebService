@@ -39,7 +39,7 @@ public class DetailsPresenter:DetailScreenPresenterProtocol {
         actorExpanded = !actorExpanded
     }
     
-    init(_ modelData: Film) {
+    required public init(_ modelData: Film) {
         self.modelData = modelData
     }
     
