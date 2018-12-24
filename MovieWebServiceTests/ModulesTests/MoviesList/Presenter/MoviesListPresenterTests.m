@@ -82,7 +82,7 @@
    
 }
 
-- (void)testThat{
+- (void)testThatOnDidSelectDetailScreenMethodIsCalled{
     [self.presenter didSelectRowAtIndexPath:nil];
     OCMVerify([self.mockRouter pushToFilmDetailScreenWithData:nil]);
     
