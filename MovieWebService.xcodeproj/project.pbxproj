@@ -26,6 +26,7 @@
 		3A3C9ADD21CF65FC00C53EB6 /* DetailsViewtest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C9ADC21CF65FC00C53EB6 /* DetailsViewtest.swift */; };
 		3A3C9AE121CF848500C53EB6 /* FilmModelStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C9AE021CF848500C53EB6 /* FilmModelStub.swift */; };
 		3A3C9AE721CFCA5B00C53EB6 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C9AE621CFCA5B00C53EB6 /* NetworkManager.swift */; };
+		3AB59C0621D0EC8400D523EF /* CellTableViewCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C9A7921CBCBA600C53EB6 /* CellTableViewCellPresenter.swift */; };
 		3AF5BFBA21CFFF4A00690214 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C9AE621CFCA5B00C53EB6 /* NetworkManager.swift */; };
 		3AF5BFC021D0AD2D00690214 /* IntegrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF5BFBF21D0AD2D00690214 /* IntegrationTest.m */; };
 		46B851E6C788D142687ED94F /* Pods_MovieWebService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43D5E7435EFF0197EE769D38 /* Pods_MovieWebService.framework */; };
@@ -994,6 +995,7 @@
 				724C4C1CE4007A2FE908E02B /* DetailsViewIntegrationTest.swift in Sources */,
 				9DD4F619A27419084F677EB0 /* DetailsInteractorTests.swift in Sources */,
 				3AF5BFBA21CFFF4A00690214 /* NetworkManager.swift in Sources */,
+				3AB59C0621D0EC8400D523EF /* CellTableViewCellPresenter.swift in Sources */,
 				3A3C9ADB21CEB16200C53EB6 /* DetailsScreenMockInteractor.swift in Sources */,
 				D8BF340B1715D2CCC3DEB3B3 /* DetailsPresenterTests.swift in Sources */,
 				0BE549F9BEDE75E7D36554D2 /* DetailsRouterTests.swift in Sources */,
