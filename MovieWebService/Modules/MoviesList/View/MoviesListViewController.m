@@ -42,7 +42,7 @@
 
 #pragma mark - MoviesListViewInterface
 - (void)setupInitialState {
-    self.navigationItem.title = @"RootViewController";
+    self.navigationItem.title = titleNameOfWebServiceScreen;
     self.view.backgroundColor = [UIColor whiteColor];
 }
 - (void)reloadView {

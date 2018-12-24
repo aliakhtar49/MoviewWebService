@@ -14,23 +14,6 @@
 #import "MoviesListInteractorOutput.h"
 #import "MovieWebService-Swift.h"
 
-@interface NetworkManagerMock : NSObject  <NetworkManagerProtocol>
-
-@end
-
-@implementation NetworkManagerMock
-
-//+ (void)requestForUserDataWithCompletionHandler:(void (^ _Nonnull)(NSDictionary<NSString *,id>*))completionHandler {
-//            completionHandler(FilmModelStub.filmMockStubDictionary())
-//}
-+ (void)requestForUserDataWithCompletionHandler:(void (^)(NSDictionary<NSString *,id> * _Nonnull))completionHandler{
-    NSDictionary  *filmMockDicitonary = [FilmModelStub filmMockStubDictionary];
-    completionHandler(filmMockDicitonary);
-}
-
-@end
-
-
 
 @interface MoviesListInteractorTests : XCTestCase
 

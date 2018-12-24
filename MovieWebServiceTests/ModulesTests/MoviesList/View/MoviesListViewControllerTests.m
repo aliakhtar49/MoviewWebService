@@ -92,12 +92,6 @@
     OCMVerify([self.controller reloadView]);
     
 }
-//- (void)testThatControllerReloadViewIsCallingWhenPresenterFetchhDatadd {
-//    
-//   [self.controller reloadView]
-// OCMVerify([self.controller.mo reloadData]);
-//    
-//}
 
 
 @end

@@ -14,3 +14,5 @@
 
 
 CGFloat const kCellTableViewCellHeight = 71;
+NSString * const titleNameOfWebServiceScreen = @"RootViewController";
+
