@@ -11,8 +11,9 @@ import Foundation
 
 @objc
 class FilmModelStub: NSObject {
-    static func buildFilmModelStub() -> Film {
-        let mockData: [String : Any] = [
+    
+    static func filmMockStubDictionary() -> [String:Any] {
+        return [
             "filmRating": 3, "languages":  ["English","Thai"],
             "nominated":  1,
             "releaseDate": 1350000000,
@@ -34,6 +35,9 @@ class FilmModelStub: NSObject {
                 "biography":  "Benjamin Geza Affleck was born on August 15, 1972 in Berkeley, California, USA but raised in Cambridge, Massachusetts, USA."
             ]
         ]
+    }
+    static func buildFilmModelStub() -> Film {
+        let mockData: [String : Any] = filmMockStubDictionary()
         return Film(data: mockData)
     }
 }
